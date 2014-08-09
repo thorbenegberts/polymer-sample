@@ -23,6 +23,7 @@
   <link rel="import" href="bower_components/core-item/core-item.html">
   <link rel="import" href="bower_components/core-menu-button/core-menu-button.html">
   <link rel="import" href="bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
+  <link rel="import" href="bower_components/core-collapse/core-collapse.html">
 
   <style>
     body {
@@ -93,9 +94,11 @@
     span.red {
       color:tomato;
     }
+
     span.yellow {
       color:gold;
     }
+
     span.green {
       color:lightgreen;
     }
@@ -110,7 +113,7 @@
 
   <core-scroll-header-panel condenses>
 
-    <core-toolbar class="main tall">
+    <core-toolbar class="main tall cover">
 
       <core-menu-button icon="add">
         <core-item icon="star-rate" label="Rate"></core-item>
@@ -134,9 +137,11 @@
 
       <div class="content">
 
-        <core-toolbar>
+        <core-toolbar onclick="document.querySelector('#collapse1').toggle()">
           <div core-flex>New</div>
         </core-toolbar>
+
+        <core-collapse id="collapse1" fixedSize class="box" opened>
 
         <section vertical layout>
           <div class="container" flex horizontal wrap around-justified layout hero-p>
@@ -155,6 +160,8 @@
 
            </div>
         </section>
+
+        </core-collapse>
 
         <core-toolbar>
           <div core-flex>Last Week</div>
