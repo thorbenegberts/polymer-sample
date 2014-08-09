@@ -4,32 +4,300 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Polymer WebApp</title>
+  <title>Taskboard</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato|Oswald' rel='stylesheet' type='text/css'>
   <!-- endbuild-->
 
   <script src="bower_components/platform/platform.js"></script>
   <!-- build:vulcanized elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <!--<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">-->
+  <!--<link rel="import" href="bower_components/core-field/core-field.html">-->
+  <link rel="import" href="bower_components/core-item/core-item.html">
+  <link rel="import" href="bower_components/core-menu-button/core-menu-button.html">
+  <link rel="import" href="bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+    }
+
+    core-toolbar {
+      font-family: 'Oswald', sans-serif;
+      background-color: lightblue;
+      overflow: hidden;
+    }
+
+    core-toolbar.main {
+      background-color: white;
+    }
+
+    .small::shadow core-icon-button {
+      padding: 12px;
+    }
+
+    .small::shadow core-icon-button::shadow core-icon {
+      display: block;
+      height: 14px;
+      width: 14px;
+    }
+
+
+
+    core-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .title {
+      -webkit-transform-origin: 0;
+      transform-origin: 0;
+      font-size: 55px;
+
+    }
+
+    .container {
+      overflow: auto;
+    }
+
+    .card {
+      position: relative;
+      height: 150px;
+      width: 192px;
+      font-size: 13px;
+      margin: 8px;
+      border-radius: 4px;
+      cursor: default;
+      background-color: gold;
+    }
+
+    .card.urgent {
+      background-color: tomato;
+    }
+
+    .card.sometime {
+      background-color: lightgreen;
+    }
+
+    span.red {
+      color:tomato;
+    }
+    span.yellow {
+      color:gold;
+    }
+    span.green {
+      color:lightgreen;
+    }
+
+  </style
+
   <!-- endbuild-->
+
 </head>
 
-<body unresolved>
+<body unresolved touch-action="auto" class="core-body-text" fullbleed layout vertical>
 
-  <div class="hero-unit">
-    <yo-greeting></yo-greeting>
-    <p>You now have</p>
-    <yo-list></yo-list>
-  </div>
+  <core-scroll-header-panel condenses>
 
-  <!-- build:js scripts/app.js -->
-  <script src="scripts/app.js"></script>
-  <!-- endbuild-->
+    <core-toolbar class="main tall">
+
+      <core-menu-button icon="add">
+        <core-item icon="star-rate" label="Rate"></core-item>
+        <core-item icon="today" label="Today"></core-item>
+        <core-item icon="keep" label="Keep"></core-item>
+      </core-menu-button>
+
+      <core-menu-button icon="menu">
+        <core-item icon="settings" label="Settings"></core-item>
+        <core-item icon="add" label="Add"></core-item>
+        <core-item icon="search" label="Search"></core-item>
+      </core-menu-button>
+
+      <div flex></div>
+
+      <div class="top indent title">
+        <span class="red">Open: 43</span> / <span class="yellow">In Progress: 4</span> / <span class="green">Done: 2443</span>
+      </div>
+
+    </core-toolbar>
+
+      <div class="content">
+
+        <core-toolbar>
+          <div core-flex>New</div>
+        </core-toolbar>
+
+        <section vertical layout>
+          <div class="container" flex horizontal wrap around-justified layout hero-p>
+
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+
+           </div>
+        </section>
+
+        <core-toolbar>
+          <div core-flex>Last Week</div>
+        </core-toolbar>
+
+        <section vertical layout>
+          <div class="container" flex horizontal wrap around-justified layout hero-p>
+
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            
+           </div>
+        </section>
+
+        <core-toolbar>
+          <div core-flex>Old</div>
+        </core-toolbar>
+
+        <section vertical layout>
+          <div class="container" flex horizontal wrap around-justified layout hero-p>
+
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            
+           </div>
+        </section>
+
+        <core-toolbar>
+          <div core-flex>Focus</div>
+        </core-toolbar>
+
+        <section vertical layout>
+          <div class="container" flex horizontal wrap around-justified layout hero-p>
+
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            
+           </div>
+        </section>
+
+        <core-toolbar>
+          <div core-flex>Waiting for Feedback</div>
+        </core-toolbar>
+
+       <section vertical layout>
+          <div class="container" flex horizontal wrap around-justified layout hero-p>
+
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            
+           </div>
+        </section>
+
+        <core-toolbar>
+          <div core-flex>Blocked</div>
+        </core-toolbar>
+
+        <section vertical layout>
+          <div class="container" flex horizontal wrap around-justified layout hero-p>
+
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            
+           </div>
+        </section>
+
+        <core-toolbar>
+          <div core-flex>Done</div>
+        </core-toolbar>
+
+        <section vertical layout>
+          <div class="container" flex horizontal wrap around-justified layout hero-p>
+
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card urgent" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            <div class="card sometime" vertical center center-justified layout>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</div>
+            
+           </div>
+        </section>
+
+      </div>
+
+    </core-scroll-header-panel>
+
+
+  
+
+  <script type="text/javascript">
+
+    /**
+    // custom transformation: scale header's title
+    var titleStyle = document.querySelector('.title').style;
+    addEventListener('core-header-transform', function(e) {
+      var d = e.detail;
+      var m = d.height - d.condensedHeight;
+      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+      titleStyle.transform = titleStyle.webkitTransform = 
+          'scale(' + scale + ') translateZ(0)';
+    });
+**/
+
+    // custom transformation: scale header's title
+    var titleStyle = document.querySelector('.title').style;
+    addEventListener('core-header-transform', function(e) {
+      var d = e.detail;
+      var m = d.height - d.condensedHeight;
+      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+      titleStyle.transform = titleStyle.webkitTransform = 
+          'scale(' + scale + ') translateZ(0)';
+    });
+  </script>
+
+
 </body>
 
 </html>
+
+
+<!--
+http://www.polymer-project.org/components/core-animated-pages/demos/grid.html
+http://www.polymer-project.org/docs/elements/core-elements.html#core-list
+http://www.polymer-project.org/components/core-menu-button/demo.html
+-->
